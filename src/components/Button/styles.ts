@@ -9,5 +9,6 @@ export const Container = styled.button`
     border-radius: 15px;
     background-color: ${({theme}) => theme.contrast_color};
     // preciso adicionar essas cores como variáveis neutras também
-    color: '#FOFOFO';
+    color: ${({theme}) => theme.background_primary};
+    padding: 1rem;
 `

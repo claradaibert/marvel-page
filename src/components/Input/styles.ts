@@ -5,38 +5,38 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 100%;
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    box-shadow: 0 0 0 30px ${({ theme }) => theme.contrast_color} inset !important;
-    color: ${({ theme }) => theme.font_primary} !important;
+    box-shadow: 0 0 0 30px ${({ theme }) => theme.background_secondary} inset !important;
+    color: ${({ theme }) => theme.background_secondary} !important;
   }
 
   .MuiTextField-root {
     label,
     p {
       &.Mui-focused {
-        color: ${({ theme }) => theme.font_primary} !important;
+        color: ${({ theme }) => theme.background_secondary} !important;
       }
 
       &.Mui-error {
         color: red !important;
       }
 
-      color: ${({ theme }) => theme.font_primary};
+      color: ${({ theme }) => theme.background_secondary};
     }
 
     > .MuiInputBase-root {
       &.Mui-focused {
         input {
-          color: ${({ theme }) => theme.font_primary} !important;
+          color: ${({ theme }) => theme.background_secondary} !important;
         }
 
         fieldset {
-          border-color: ${({ theme }) => theme.font_primary} !important;
+          border-color: ${({ theme }) => theme.background_secondary} !important;
         }
       }
 
@@ -56,11 +56,11 @@ export const Container = styled.div`
       }
 
       input {
-        color: ${({ theme }) => theme.font_primary};
+        color: ${({ theme }) => theme.background_secondary};
       }
 
       fieldset {
-        border-color: ${({ theme }) => theme.contrast_color};
+        border-color: ${({ theme }) => theme.background_secondary};
       }
     }
   }
