@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -7,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
         outline: 0;
         box-sizing: border-box;
         max-width: 100vw;
+        font-family: 'Montserrat', sans-serif;
 
         ::-webkit-scrollbar {
             width: 0.4rem;

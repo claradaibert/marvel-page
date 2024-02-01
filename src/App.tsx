@@ -1,19 +1,25 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
+import { RouterProvider } from "react-router-dom";
 
 // Theme import
 import { lightTheme } from "./styles/themes/light";
 import { darkTheme } from "./styles/themes/dark";
 import { GlobalStyle } from "./styles/global";
 
-// Page import
-import { Auth } from "./pages/Auth";
+// Util import
+import { toastConfig } from "./utils/ToastConfig";
 
-function App() {
+// Page router import
+import { router } from "./routes";
+
+const App: React.FC = () => {
   return (
     <ThemeProvider theme={lightTheme}>
+      <ToastContainer {...toastConfig} />
+      <RouterProvider router={router} />
       <GlobalStyle />
-      <Auth />
     </ThemeProvider>
   );
 }
