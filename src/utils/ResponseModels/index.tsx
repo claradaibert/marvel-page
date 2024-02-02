@@ -32,6 +32,7 @@ export interface ICharactersResponse {
     stories: IInfoObject;
     thumbnail: IThumbnail;
     urls: IUrls[];
+    [key:string]: any;
 }
 
 export interface IComicsResponse {
