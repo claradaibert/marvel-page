@@ -10,6 +10,7 @@ export const Container = styled.div<IContainerProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 35rem;
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
