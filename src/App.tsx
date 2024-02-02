@@ -3,6 +3,9 @@ import { ThemeProvider } from "styled-components";
 import { ToastContainer } from "react-toastify";
 import { RouterProvider } from "react-router-dom";
 
+// Hook import
+import { useAppSelector } from "./hooks/reduxHooks";
+
 // Theme import
 import { lightTheme } from "./styles/themes/light";
 import { darkTheme } from "./styles/themes/dark";
@@ -15,13 +18,17 @@ import { toastConfig } from "./utils/ToastConfig";
 import { router } from "./routes";
 
 const App: React.FC = () => {
+  const theme = useAppSelector((state) => state.theme);
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider
+      theme={theme.currentTheme === "light" ? lightTheme : darkTheme}
+    >
       <ToastContainer {...toastConfig} />
       <RouterProvider router={router} />
       <GlobalStyle />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
