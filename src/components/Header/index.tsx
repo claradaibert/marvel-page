@@ -19,6 +19,7 @@ const Header: React.FC = () => {
   const handleExit = () => {
     navigate("/");
     setCookie("userKeys", {});
+    console.log(cookie);
   };
 
   return (
@@ -27,7 +28,10 @@ const Header: React.FC = () => {
       <div className="navigationMenu">
         <PageNavigation />
         <div className="navMenu exitButton">
-          <Button text="SAIR" handleClick={() => handleExit()} />
+          <Button
+            text="SAIR"
+            handleClick={() => handleExit()}
+          />
         </div>
       </div>
     </Container>

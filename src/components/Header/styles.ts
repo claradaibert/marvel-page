@@ -16,6 +16,7 @@ export const Container = styled.div`
   color: ${({ theme }) => theme.pallete_white};
   font-size: 1rem;
   box-shadow: 0px 0px 30px ${({theme}) => theme.contrast_color};
+  z-index: 4;
 
   .themeToggle {
     display: flex;
