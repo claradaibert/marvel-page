@@ -19,7 +19,6 @@ const Header: React.FC = () => {
   const handleExit = () => {
     navigate("/");
     setCookie("userKeys", {});
-    console.log(cookie);
   };
 
   return (
