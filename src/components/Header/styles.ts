@@ -15,8 +15,19 @@ export const Container = styled.div`
   padding: 2rem;
   color: ${({ theme }) => theme.pallete_white};
   font-size: 1rem;
-  box-shadow: 0px 0px 30px ${({theme}) => theme.contrast_color};
+  box-shadow: 0px 0px 30px ${({ theme }) => theme.contrast_color};
   z-index: 4;
+
+  .logoContainer {
+    width: 10rem;
+    overflow-x: hidden;
+
+    svg {
+      position: relative;
+      right: 50px;
+      height: 5.2rem;
+    }
+  }
 
   .themeToggle {
     display: flex;
@@ -32,23 +43,12 @@ export const Container = styled.div`
     }
   }
 
-  .navigationMenu {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: space-evenly;
-
-    .navMenu {
-      border: none;
-      width: fit-content;
-      background-color: transparent;
-      border: none;
-      color: ${({ theme }) => theme.pallete_white};
-      font-size: 1rem;
-    }
-
-    .navMenu.exitButton {
-        width: 6rem;
-    }
+  .navMenu {
+    border: none;
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    color: ${({ theme }) => theme.pallete_white};
+    font-size: 1.5rem;
   }
 `;

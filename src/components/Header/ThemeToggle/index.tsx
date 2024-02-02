@@ -13,19 +13,17 @@ const ThemeToggle: React.FC = () => {
   const theme = useAppSelector((state) => state.theme);
   const dispatch = useAppDispatch();
 
-  const renderText = () => {
+  const renderIcon = () => {
     if (theme.currentTheme === "light") {
       return (
         <>
           <MdOutlineWbSunny />
-          <p>Modo claro</p>
         </>
       );
     }
     return (
       <>
         <FaRegMoon />
-        <p>Modo escuro</p>
       </>
     );
   };
@@ -36,7 +34,7 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <button className="themeToggle" type="button" onClick={() => handleClick()}>
-      {renderText()}
+      {renderIcon()}
     </button>
   );
 };

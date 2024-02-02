@@ -7,9 +7,27 @@ const PageNavigation: React.FC = () => {
 
   return (
     <>
-      <button className="navMenu">Personagens</button>
-      <button className="navMenu">Revistas</button>
-      <button className="navMenu">Autores</button>
+      <button
+        className="navMenu"
+        type="button"
+        onClick={() => navigate("/characters")}
+      >
+        Personagens
+      </button>
+      <button
+        className="navMenu"
+        type="button"
+        onClick={() => navigate("/comics")}
+      >
+        Quadrinhos
+      </button>
+      <button
+        className="navMenu"
+        type="button"
+        onClick={() => navigate("/creators")}
+      >
+        Criadores
+      </button>
     </>
   );
 };
