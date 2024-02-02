@@ -10,7 +10,7 @@ interface IProps {
   label: string;
   type?: string;
   handleChange: (value: string) => any;
-  // onEnterKey?: (event: React.KeyboardEvent) => any;
+  inputStyle?: 'black' | 'red'
 }
 
 const Input: React.FC<IProps> = ({
@@ -19,10 +19,11 @@ const Input: React.FC<IProps> = ({
   label,
   type,
   handleChange,
+  inputStyle,
   // onEnterKey,
 }) => {
   return (
-    <Container>
+    <Container inputStyle={inputStyle}>
       <TextField
         name={name}
         type={type}

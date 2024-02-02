@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface IContainerProps {
+  inputStyle?: "red" | "black";
+}
+
+export const Container = styled.div<IContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +40,10 @@ export const Container = styled.div`
         }
 
         fieldset {
-          border-color: ${({ theme }) => theme.background_secondary} !important;
+          border-color: ${(props) =>
+            props.inputStyle === "red"
+              ? `${props.theme.contrast_color}`
+              : ` ${props.theme.pallete_grey}`} !important;
         }
       }
 
@@ -60,7 +67,11 @@ export const Container = styled.div`
       }
 
       fieldset {
-        border-color: ${({ theme }) => theme.background_secondary};
+        border-color: ${(props) =>
+          props.inputStyle === "red"
+            ? `${props.theme.contrast_color}`
+            : ` ${props.theme.pallete_grey}`};
+        box-shadow: ${props => props.inputStyle === 'red' && `0px 0px 15px ${props.theme.contrast_color}`};
       }
     }
   }
