@@ -8,7 +8,6 @@ export const Container = styled.button`
     border: none;
     border-radius: 15px;
     background-color: ${({theme}) => theme.contrast_color};
-    // preciso adicionar essas cores como variáveis neutras também
-    color: ${({theme}) => theme.background_primary};
+    color: ${({theme}) => theme.pallete_white};
     padding: 1rem;
 `
