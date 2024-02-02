@@ -61,10 +61,10 @@ const Auth: React.FC = () => {
   };
 
   useEffect(() => {
-    if (cookies.userKeys) {
+    if (cookies?.userKeys?.publicKey) {
       navigate('/characters');
     }
-  })
+  });
 
   return (
     <Container>

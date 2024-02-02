@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useDebounce } from "use-lodash-debounce";
+import React from "react";
 import { MdFilterList } from "react-icons/md";
 
 // Component import
