@@ -10,7 +10,10 @@ export const Container = styled.div<IContainerProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 35rem;
+  
+  @media screen and (min-width: 760px) {
+    max-width: 35rem;
+  }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -72,7 +75,9 @@ export const Container = styled.div<IContainerProps>`
           props.inputStyle === "red"
             ? `${props.theme.contrast_color}`
             : ` ${props.theme.pallete_grey}`};
-        box-shadow: ${props => props.inputStyle === 'red' && `0px 0px 15px ${props.theme.contrast_color}`};
+        box-shadow: ${(props) =>
+          props.inputStyle === "red" &&
+          `0px 0px 15px ${props.theme.contrast_color}`};
       }
     }
   }
