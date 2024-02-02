@@ -19,7 +19,13 @@ const ListItem: React.FC<IProps> = ({ item }) => {
   // Hooks
   const theme = useAppSelector((state) => state.theme.currentTheme);
   const itemImageSource = `${item.thumbnail.path}.${item.thumbnail.extension}`;
-  const itemName = item?.name ? item?.name : item?.title;
+  
+  const getItemName = () => {
+    if (item?.name) return item?.name;
+    if (item?.fullName) return item?.fullName;
+    return item?.title;
+  } 
+  const itemName = getItemName();
 
   return (
     <Container containerStyle={theme === "light" ? "black" : "red"}>
