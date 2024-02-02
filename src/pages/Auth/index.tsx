@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { useNavigate } from "react-router-dom";
+
+// Store action import
+import { setKeys } from "../../store/user/slice";
 
 // Asset import
 import MarvelLogo from "../../assets/Marvel_Logo.png";
@@ -15,6 +21,12 @@ import { Form } from "./Form/index.";
 import { Container } from "./styles";
 
 const Auth: React.FC = () => {
+  // Hooks
+  const dispatch = useAppDispatch();
+  const [cookies, setCookie] = useCookies();
+  const navigate = useNavigate();
+
+  // Local states
   const [secretKey, setSecretKey] = useState<string>("");
   const [publicKey, setPublicKey] = useState<string>("");
 
@@ -37,16 +49,27 @@ const Auth: React.FC = () => {
         err.inner.forEach((error: any) => {
           toast.error(error.message);
         });
+        throw err;
       });
+
+      dispatch(setKeys(data));
+      setCookie('userKeys', data);
+      navigate('/characters');
     } catch {
       return;
     }
   };
 
+  useEffect(() => {
+    if (cookies.userKeys) {
+      navigate('/characters');
+    }
+  })
+
   return (
     <Container>
       <div className="formBox">
-        <img src={MarvelLogo} />
+        <img src={MarvelLogo} alt="Marvel Logo" />
         <Form
           secretKey={secretKey}
           publicKey={publicKey}
