@@ -31,5 +31,20 @@ export interface ICharactersResponse {
     series: IInfoObject;
     stories: IInfoObject;
     thumbnail: IThumbnail;
-    urls: IUrls;
+    urls: IUrls[];
+}
+
+export interface IComicsResponse {
+    id: number;
+    title: string;
+    issueNumber: number;
+    description: string;
+    modified: string;
+    format: string;
+    resourceURI: string;
+    urls: IUrls[];
+    characters: IInfoObject;
+    creators: IInfoObject;
+    thumbnail: IThumbnail;
+    [key:string]: any;
 }
