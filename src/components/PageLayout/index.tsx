@@ -18,7 +18,7 @@ import { ListItem } from "../ListItem";
 import { api } from "../../services";
 
 // Util import
-import { ICharactersResponse } from "../../utils/ResponseModels";
+import { ICharactersResponse, IComicsResponse } from "../../utils/ResponseModels";
 
 // Inner component import
 import { SearchBar } from "./SearchBar";
@@ -27,7 +27,7 @@ import { Container } from "./styles";
 
 interface IProps {
   pageType: string;
-  pageList: ICharactersResponse[] | undefined;
+  pageList: ICharactersResponse[] | IComicsResponse[] | undefined;
   handleSeeMoreClick: () => void;
   totalItems: number;
   loading: boolean;

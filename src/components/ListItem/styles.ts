@@ -13,14 +13,16 @@ export const Container = styled.div<IContainerProps>`
   gap: 1rem;
   background-color: ${(props) =>
     props.containerStyle === "red"
-      ? `${props.theme.contrast_color}`
-      : `${props.theme.background_secondary}`};
+      ? `rgba(236,29,36,0.7)`
+      : `rgba(32,32,32, 0.9)`};
   color: ${({theme}) => theme.pallete_white};
   overflow-y: hidden;
   cursor: pointer;
 
   .imgContainer {
     height: fit-content;
+    display: flex;
+    align-items: center;
 
     img{
         width: 7rem;
