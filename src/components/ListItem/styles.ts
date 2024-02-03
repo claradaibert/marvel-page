@@ -17,7 +17,6 @@ export const Container = styled.div<IContainerProps>`
       : `rgba(32,32,32, 0.9)`};
   color: ${({theme}) => theme.pallete_white};
   overflow-y: hidden;
-  cursor: pointer;
 
   .imgContainer {
     height: fit-content;
@@ -51,6 +50,7 @@ export const Container = styled.div<IContainerProps>`
         border: none;
         background-color: transparent;
         color: ${({theme}) => theme.pallete_white};
+        cursor: pointer;
     }
   }
 `;
