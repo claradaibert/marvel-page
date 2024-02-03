@@ -6,10 +6,11 @@ interface IContainerProps {
 
 export const Container = styled.div<IContainerProps>`
   width: 100%;
-  max-height: 5rem;
+  height: 5rem;
   border: none;
   border-radius: 5px;
   display: flex;
+  transition: height 300ms;
   gap: 1rem;
   background-color: ${(props) =>
     props.containerStyle === "red"
@@ -52,5 +53,9 @@ export const Container = styled.div<IContainerProps>`
         color: ${({theme}) => theme.pallete_white};
         cursor: pointer;
     }
+  }
+
+  &:hover {
+    height: 6rem;
   }
 `;
