@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import React, { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -14,16 +13,18 @@ import { Header } from "../Header";
 import { Button } from "../Button";
 import { ListItem } from "../ListItem";
 
-// Service import
-import { api } from "../../services";
-
 // Util import
-import { ICharactersResponse, IComicsResponse } from "../../utils/ResponseModels";
+import {
+  ICharactersResponse,
+  IComicsResponse,
+} from "../../utils/ResponseModels";
 
 // Inner component import
 import { SearchBar } from "./SearchBar";
+import { PageBody } from "./PageBody";
 
 import { Container } from "./styles";
+import { Sidebar } from "../Sidebar";
 
 interface IProps {
   pageType: string;
@@ -46,6 +47,7 @@ const PageLayout: React.FC<IProps> = ({
 }) => {
   // Hooks
   const user = useAppSelector((state) => state.user);
+  const sidebarOpen = useAppSelector(state => state.theme.sideBarOpen);
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -63,21 +65,21 @@ const PageLayout: React.FC<IProps> = ({
   }, [cookies?.userKeys, user?.publicKey, dispatch, navigate]);
 
   return (
-    <Container>
+    <Container sidebarOpen={sidebarOpen}>
       <Header />
-      <div className="bodyContainer">
-        <div className="pageTitle">{pageType}</div>
-        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-        {pageList?.map((item) => (
-          <ListItem item={item} />
-        ))}
-        {totalItems > (pageList?.length || 0) && (
-          <Button
-            handleClick={() => handleSeeMoreClick()}
-            text="VER MAIS"
+      <div className="pageWrap">
+        <Sidebar />
+        <div className="bodyWrap">
+          <PageBody 
+            pageType={pageType}
+            pageList={pageList}
+            handleSeeMoreClick={handleSeeMoreClick}
+            totalItems={totalItems}
             loading={loading}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
           />
-        )}
+        </div>
       </div>
     </Container>
   );
