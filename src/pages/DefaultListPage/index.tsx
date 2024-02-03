@@ -8,6 +8,7 @@ import { useAppSelector } from "../../hooks/reduxHooks";
 
 // Component import
 import { PageLayout } from "../../components/PageLayout";
+import { ListPageContainer } from "../../components/ListPageContainer";
 
 // Service import
 import { api } from "../../services";
@@ -110,7 +111,7 @@ const DefaultListPage: React.FC = () => {
   }, [myPublicKey, apiBaseRoute]);
 
   return (
-    <PageLayout
+    <ListPageContainer
       pageType={pageTitle}
       pageList={pageList}
       handleSeeMoreClick={handleSeeMoreClick}
