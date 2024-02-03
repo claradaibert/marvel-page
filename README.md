@@ -66,3 +66,12 @@ Esse sistema utiliza o `redux` para gerenciar as seguintes informações:
 ## Como criar sua própria chave de acesso
 
 Acessando o [site de desenvolvedor da Marvel](https://developer.marvel.com/) e fazendo login ou cadastro.
+
+## Como executar a aplicação
+
+1. Clone o repositório na sua máquina
+   - Abra o prompt de comando
+   - Execute o comando `git clone https://github.com/claradaibert/marvel-page.git`
+2. Abra o código no seu editor
+3. No terminal, execute o comando `yarn install` para instalar todas as dependências do projeto
+4. Depois, no mesmo terminal, execute o comando `yarn start`, para iniciar o projeto localmente 
