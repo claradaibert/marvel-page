@@ -27,8 +27,7 @@ const Header: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleMenuButton = () => {
-    console.log(1);
-    // dispatch(setSidebar(!sidebarState));
+    dispatch(setSidebar(!sidebarState));
   };
 
   return (
