@@ -2,9 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 // import pages
 import { Auth } from "../pages/Auth";
-import { Comics } from "../pages/Comics";
-import { Creators } from "../pages/Creators";
-import { Characters } from "../pages/Characters";
+import { DefaultListPage } from "../pages/DefaultListPage";
 
 // Create routes
 const router = createBrowserRouter([
@@ -14,15 +12,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <Characters />,
+    element: <DefaultListPage />,
   },
   {
     path: '/comics',
-    element: <Comics />,
+    element: <DefaultListPage />,
   },
   {
     path: '/creators',
-    element: <Creators />,
+    element: <DefaultListPage />,
   },
 ]);
 
