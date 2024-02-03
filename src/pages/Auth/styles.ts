@@ -42,5 +42,13 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
     }
+
+    a{
+      text-decoration: none;
+      color: ${({theme}) => theme.pallete_grey};
+      font-size: 0.875rem;
+      position: relative;
+      bottom: 1rem;
+    }
   }
 `;

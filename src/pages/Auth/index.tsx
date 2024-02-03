@@ -53,8 +53,8 @@ const Auth: React.FC = () => {
       });
 
       dispatch(setKeys(data));
-      setCookie('userKeys', data);
-      navigate('/characters');
+      setCookie("userKeys", data);
+      navigate("/characters");
     } catch {
       return;
     }
@@ -62,7 +62,7 @@ const Auth: React.FC = () => {
 
   useEffect(() => {
     if (cookies?.userKeys?.publicKey) {
-      navigate('/characters');
+      navigate("/characters");
     }
   });
 
@@ -77,6 +77,9 @@ const Auth: React.FC = () => {
           setPublicKey={setPublicKey}
         />
         <Button handleClick={() => handleSend()} text="ENTRAR" />
+        <a href="https://developer.marvel.com/" target="_blank">
+          Não possui chaves? Crie a sua aqui
+        </a>
       </div>
     </Container>
   );

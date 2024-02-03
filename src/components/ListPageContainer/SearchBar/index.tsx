@@ -1,5 +1,4 @@
 import React from "react";
-import { MdFilterList } from "react-icons/md";
 
 // Component import
 import { Input } from "../../../components/Input";
