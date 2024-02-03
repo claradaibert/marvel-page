@@ -29,7 +29,7 @@ const ItemDetails: React.FC = () => {
   // Local states
   const [loading, setLoading] = useState<boolean>(false);
   const [itemInfo, setItemInfo] = useState<IResponse>();
-  console.log(itemInfo, "itemInfo");
+
   const myPublicKey = user?.publicKey;
 
   const getItemInfo = () => {
@@ -66,7 +66,6 @@ const ItemDetails: React.FC = () => {
     if (myPublicKey) {
       getItemInfo();
     }
-    console.log(myPublicKey, "mypublickey");
   }, [itemType, itemId, myPublicKey]);
 
   return (
