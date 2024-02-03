@@ -17,7 +17,7 @@ import { Container } from "./styles";
 
 interface IProps {
   pageType: string;
-  pageList: IResponse[] | undefined;
+  pageList?: IResponse[];
   handleSeeMoreClick: () => void;
   totalItems: number;
   searchLoading: boolean;
