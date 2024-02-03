@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+# Marvel Page Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nesse projeto, usamos a API pública da marvel para poder listar e ver detalhes sobre personagens, quadrinhos e criadores vinculados à empresa.
 
-## Available Scripts
+## Componentes
 
-In the project directory, you can run:
+Essa pasta contém os componentes genéricos, feitos para serem aplicados em mais de um lugar no código
+Os componentes são:
 
-### `yarn start`
+### Button
+props recebidas: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- handleClick (function): função para definir a ação do nosso onClick
+- text(string): texto que estará renderizado dentro do botão
+- loading(boolean): define se a página está carregando alguma informação, renderizando o ícone `CircularProgress`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Header
 
-### `yarn test`
+Contém a nossa barra de navegação, controlando o menu e o tema da página
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Input
 
-### `yarn build`
+Props recebidas:
+- name (string): atributo `name` do input
+- value(string): o texto inserido no input, no caso do código, são as variáveis que representam o texto dentro do input
+- label(string): atributo `label` do input
+- type(string): atributo `type`
+- handleChange(function): função para manipular o valor recebido no input
+- inputStyle(string): define a estilização do input, visto que ele tem cores diferentes em páginas diferentes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ListItem
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Componente dos itens das listas das páginas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ListPageContainer
 
-### `yarn eject`
+Visto que todas as páginas de listagem de informação tem a mesma estilização e estrutura básica, fez sentido criar um componente genérico que pudesse ser utilizado por todas
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- pageType(string): o título da página
+-  pageList(array): lista da página (personagens, quadrinhos, criadores)
+-  handleSeeMoreClick(function): como utilizamos paginação para renderizar a listagem da página, essa função manipula o botão de paginação, adicionando mais itens na lista
+-  totalItems(number): número total de itens que estão disponíveis para resposta. Como utilizamos paginação, esse número vai informar se ainda devemos mostrar o botão de `ver mais`
+-  searchLoading(boolean): as páginas de listagem têm dois modos de carregar: para carregar a lista inicial, e para carregar as adições à lista. Essa variável é responsável pelo primeiro modo
+-  loading(boolean): essa variável é responsável pelo carregamento das adições à lista
+-  searchValue(string): valor do input de busca por nome
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ### Sidebar
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  Componente da barra de navegação
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Páginas
 
-## Learn More
+As páginas do sistema são:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Página de login (`Auth`)
+- Páginas de listagem de personagens, criadores e quadrinhos (`DefaultListPage`)
+    - visto que as três páginas seguiam a mesma estrutura e lógica, foi criado um único componente para as três, para evitar repetições e construir um código mais limpo
+- Página de detalhes dos itens das listas (`ItemDetails`)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API
+
+Para comunicar com a api, esse sistema usa a biblioteca `axios`. A baseUrl está localizada dentro da pasta `services`
+
+## Armazenamento de dados
+
+Utilizamos o pacote `react-cookies` para poder armazenar a informação das chaves do usuário nos cookies. Dessa forma, mesmo se o usuário sair da página ou recarregar ela, as informações dele irão persistir. O usuário pode escolher deletar suas informações do sistema fazendo o logout, que deleta todos os cookies.
+
+## Gerenciamento de states
+
+Esse sistema utiliza o `redux` para gerenciar as seguintes informações:
+
+- Chaves de acesso do usuário
+- Preferências de tema (modo claro ou modo escuro, assim como o estado da barra de navegação)
+
+## Como criar sua própria chave de acesso
+
+Acessando o [site de desenvolvedor da Marvel](https://developer.marvel.com/) e fazendo login ou cadastro.
+
+## Como executar a aplicação
+
+1. Clone o repositório na sua máquina
+   - Abra o prompt de comando
+   - Execute o comando `git clone https://github.com/claradaibert/marvel-page.git`
+2. Abra o código no seu editor
+3. No terminal, execute o comando `yarn install` para instalar todas as dependências do projeto
+4. Depois, no mesmo terminal, execute o comando `yarn start`, para iniciar o projeto localmente 
