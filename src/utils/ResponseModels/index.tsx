@@ -2,6 +2,7 @@ export interface IItems {
     name: string;
     resourceURI: string;
     type?: string;
+    [key:string]: any;
 }
 
 export interface IInfoObject {
@@ -24,7 +25,7 @@ export interface IUrls {
 export interface IResponse {
     id: number;
     characters?: IInfoObject;
-    serie?: IInfoObject;
+    series?: IInfoObject;
     stories?: IInfoObject;
     thumbnail?: IThumbnail;
     comics?: IInfoObject;
