@@ -1,24 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 // Component import
 import { ListItem } from "../../ListItem";
 import { Button } from "../../Button";
 
 // Util import
-import {
-  ICharactersResponse,
-  IComicsResponse,
-} from "../../../utils/ResponseModels";
+import { IResponse } from "../../../utils/ResponseModels";
 
 // Inner component import
 import { SearchBar } from "../SearchBar";
 
 interface IProps {
   pageType: string;
-  pageList: ICharactersResponse[] | IComicsResponse[] | undefined;
+  pageList: IResponse[] | undefined;
   handleSeeMoreClick: () => void;
   totalItems: number;
+  searchLoading: boolean;
   loading: boolean;
   searchValue: string;
   setSearchValue: (value: string) => void;
@@ -29,6 +28,7 @@ const PageBody: React.FC<IProps> = ({
   pageList,
   handleSeeMoreClick,
   totalItems,
+  searchLoading,
   loading,
   searchValue,
   setSearchValue,
@@ -37,9 +37,17 @@ const PageBody: React.FC<IProps> = ({
     <div className="bodyContainer">
       <div className="pageTitle">{pageType}</div>
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-      {pageList?.map((item) => (
-        <ListItem item={item} />
-      ))}
+      {searchLoading ? (
+        <div className="circularProgressContainer">
+          <CircularProgress />
+        </div>
+      ) : (
+        <>
+          {pageList?.map((item) => (
+            <ListItem item={item} />
+          ))}
+        </>
+      )}
       {totalItems > (pageList?.length || 0) && (
         <Button
           handleClick={() => handleSeeMoreClick()}

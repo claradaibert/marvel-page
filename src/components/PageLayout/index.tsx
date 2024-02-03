@@ -14,10 +14,7 @@ import { Button } from "../Button";
 import { ListItem } from "../ListItem";
 
 // Util import
-import {
-  ICharactersResponse,
-  IComicsResponse,
-} from "../../utils/ResponseModels";
+import { IResponse } from "../../utils/ResponseModels";
 
 // Inner component import
 import { SearchBar } from "./SearchBar";
@@ -28,9 +25,10 @@ import { Sidebar } from "../Sidebar";
 
 interface IProps {
   pageType: string;
-  pageList: ICharactersResponse[] | IComicsResponse[] | undefined;
+  pageList: IResponse[] | undefined;
   handleSeeMoreClick: () => void;
   totalItems: number;
+  searchLoading: boolean;
   loading: boolean;
   searchValue: string;
   setSearchValue: (value: string) => void;
@@ -42,12 +40,13 @@ const PageLayout: React.FC<IProps> = ({
   handleSeeMoreClick,
   totalItems,
   loading,
+  searchLoading,
   searchValue,
   setSearchValue,
 }) => {
   // Hooks
   const user = useAppSelector((state) => state.user);
-  const sidebarOpen = useAppSelector(state => state.theme.sideBarOpen);
+  const sidebarOpen = useAppSelector((state) => state.theme.sideBarOpen);
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -70,12 +69,13 @@ const PageLayout: React.FC<IProps> = ({
       <div className="pageWrap">
         <Sidebar />
         <div className="bodyWrap">
-          <PageBody 
+          <PageBody
             pageType={pageType}
             pageList={pageList}
             handleSeeMoreClick={handleSeeMoreClick}
             totalItems={totalItems}
             loading={loading}
+            searchLoading={searchLoading}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
           />

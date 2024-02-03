@@ -12,8 +12,7 @@ export const Container = styled.div<IContainerProps>`
 
   .pageWrap {
     .bodyWrap {
-      padding-left: ${(props) =>
-        props.sidebarOpen ? `19rem` : "0rem"};
+      padding-left: ${(props) => (props.sidebarOpen ? `19rem` : "0rem")};
       transition: 0.25s;
       .bodyContainer {
         display: flex;
@@ -56,6 +55,17 @@ export const Container = styled.div<IContainerProps>`
               width: 100%;
               justify-content: flex-end;
             }
+          }
+        }
+
+        .circularProgressContainer {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 2rem 0;
+
+          span.MuiCircularProgress-root {
+            color: ${({ theme }) => theme.background_secondary};
           }
         }
       }

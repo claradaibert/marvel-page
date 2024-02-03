@@ -6,25 +6,25 @@ import { IoMdArrowForward } from "react-icons/io";
 import { useAppSelector } from "../../hooks/reduxHooks";
 
 // Util import
-import { ICharactersResponse, IComicsResponse } from "../../utils/ResponseModels";
+import { IResponse } from "../../utils/ResponseModels";
 
 // Style import
 import { Container } from "./styles";
 
 interface IProps {
-  item: ICharactersResponse | IComicsResponse;
+  item: IResponse;
 }
 
 const ListItem: React.FC<IProps> = ({ item }) => {
   // Hooks
   const theme = useAppSelector((state) => state.theme.currentTheme);
-  const itemImageSource = `${item.thumbnail.path}.${item.thumbnail.extension}`;
-  
+  const itemImageSource = `${item?.thumbnail?.path}.${item?.thumbnail?.extension}`;
+
   const getItemName = () => {
     if (item?.name) return item?.name;
     if (item?.fullName) return item?.fullName;
     return item?.title;
-  } 
+  };
   const itemName = getItemName();
 
   return (
@@ -35,8 +35,8 @@ const ListItem: React.FC<IProps> = ({ item }) => {
       <div className="infoContainer">
         <p className="itemName">{itemName.toUpperCase()}</p>
         <button className="seeMoreButton">
-            <p>Ver mais</p>
-            <IoMdArrowForward />
+          <p>Ver mais</p>
+          <IoMdArrowForward />
         </button>
       </div>
     </Container>
