@@ -15,7 +15,6 @@ import { IResponse } from "../../utils/ResponseModels";
 import { PageLayout } from "../../components/PageLayout";
 
 // Inner component import
-import { InfoBox } from "./InfoBox";
 import { PageBody } from "./PageBody";
 
 // Style import
@@ -41,12 +40,6 @@ const ItemDetails: React.FC = () => {
       itemId,
       itemType,
     };
-  };
-
-  const getItemName = () => {
-    if (itemInfo?.name) return itemInfo?.name;
-    if (itemInfo?.fullName) return itemInfo?.fullName;
-    return itemInfo?.title;
   };
 
   const { itemId, itemType } = getItemInfo();
