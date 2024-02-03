@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 // Hook import
 import { useAppSelector } from "../../hooks/reduxHooks";
@@ -15,6 +16,7 @@ import { PageLayout } from "../../components/PageLayout";
 
 // Inner component import
 import { InfoBox } from "./InfoBox";
+import { PageBody } from "./PageBody";
 
 // Style import
 import { Container } from "./styles";
@@ -70,21 +72,13 @@ const ItemDetails: React.FC = () => {
   return (
     <PageLayout>
       <Container>
-        <div className="header">{getItemName()}</div>
-        <div className="itemInfo">
-          {!!itemInfo?.comics && (
-            <InfoBox items={itemInfo?.comics?.items} title="Quadrinhos" />
-          )}
-          {!!itemInfo?.series && (
-            <InfoBox items={itemInfo?.series?.items} title="Séries" />
-          )}
-          {!!itemInfo?.characters && (
-            <InfoBox items={itemInfo?.characters?.items} title="Personagens" />
-          )}
-          {!!itemInfo?.stories && (
-            <InfoBox items={itemInfo?.stories?.items} title="Histórias" />
-          )}
-        </div>
+        {loading ? (
+          <div className="loadingContainer">
+            <CircularProgress />
+          </div>
+        ) : (
+          <PageBody itemInfo={itemInfo} />
+        )}
       </Container>
     </PageLayout>
   );
