@@ -48,6 +48,15 @@ Visto que todas as páginas de listagem de informação tem a mesma estilizaçã
 
   Componente da barra de navegação
 
+## Páginas
+
+As páginas do sistema são:
+
+- Página de login (`Auth`)
+- Páginas de listagem de personagens, criadores e quadrinhos (`DefaultListPage`)
+    - visto que as três páginas seguiam a mesma estrutura e lógica, foi criado um único componente para as três, para evitar repetições e construir um código mais limpo
+- Página de detalhes dos itens das listas (`ItemDetails`)
+
 ## API
 
 Para comunicar com a api, esse sistema usa a biblioteca `axios`. A baseUrl está localizada dentro da pasta `services`
