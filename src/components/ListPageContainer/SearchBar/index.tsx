@@ -20,10 +20,6 @@ const SearchBar: React.FC<IProps> = ({ searchValue, setSearchValue }) => {
         inputStyle="red"
         handleChange={(e) => setSearchValue(e)}
       />
-      <button type="button">
-        <MdFilterList />
-        <p>Filtrar</p>
-      </button>
     </div>
   );
 };
