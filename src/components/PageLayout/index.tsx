@@ -24,26 +24,10 @@ import { Container } from "./styles";
 import { Sidebar } from "../Sidebar";
 
 interface IProps {
-  pageType: string;
-  pageList: IResponse[] | undefined;
-  handleSeeMoreClick: () => void;
-  totalItems: number;
-  searchLoading: boolean;
-  loading: boolean;
-  searchValue: string;
-  setSearchValue: (value: string) => void;
+  children?: React.ReactNode;
 }
 
-const PageLayout: React.FC<IProps> = ({
-  pageType,
-  pageList,
-  handleSeeMoreClick,
-  totalItems,
-  loading,
-  searchLoading,
-  searchValue,
-  setSearchValue,
-}) => {
+const PageLayout: React.FC<IProps> = ({children}) => {
   // Hooks
   const user = useAppSelector((state) => state.user);
   const sidebarOpen = useAppSelector((state) => state.theme.sideBarOpen);
@@ -69,16 +53,7 @@ const PageLayout: React.FC<IProps> = ({
       <div className="pageWrap">
         <Sidebar />
         <div className="bodyWrap">
-          <PageBody
-            pageType={pageType}
-            pageList={pageList}
-            handleSeeMoreClick={handleSeeMoreClick}
-            totalItems={totalItems}
-            loading={loading}
-            searchLoading={searchLoading}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-          />
+          {children}
         </div>
       </div>
     </Container>
