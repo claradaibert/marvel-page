@@ -21,31 +21,13 @@ export interface IUrls {
     url: string;
 }
 
-export interface ICharactersResponse {
-    comics: IInfoObject;
-    description: string;
+export interface IResponse {
     id: number;
-    name: string;
-    modified: string;
-    resourceURI: string;
-    series: IInfoObject;
-    stories: IInfoObject;
-    thumbnail: IThumbnail;
-    urls: IUrls[];
-    [key:string]: any;
-}
-
-export interface IComicsResponse {
-    id: number;
-    title: string;
-    issueNumber: number;
-    description: string;
-    modified: string;
-    format: string;
-    resourceURI: string;
-    urls: IUrls[];
-    characters: IInfoObject;
-    creators: IInfoObject;
-    thumbnail: IThumbnail;
+    characters?: IInfoObject;
+    serie?: IInfoObject;
+    stories?: IInfoObject;
+    thumbnail?: IThumbnail;
+    comics?: IInfoObject;
+    urls?: IUrls[];
     [key:string]: any;
 }
