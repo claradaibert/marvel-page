@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../hooks/reduxHooks";
 
 // Component import
-import { PageLayout } from "../../components/PageLayout";
 import { ListPageContainer } from "../../components/ListPageContainer";
 
 // Service import

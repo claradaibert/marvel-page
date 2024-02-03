@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { IoBookOutline, IoLogOutOutline, IoStarOutline } from "react-icons/io5";

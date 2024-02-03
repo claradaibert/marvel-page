@@ -10,15 +10,6 @@ import { setKeys } from "../../store/user/slice";
 
 // Component import
 import { Header } from "../Header";
-import { Button } from "../Button";
-import { ListItem } from "../ListItem";
-
-// Util import
-import { IResponse } from "../../utils/ResponseModels";
-
-// Inner component import
-import { SearchBar } from "./SearchBar";
-import { PageBody } from "./PageBody";
 
 import { Container } from "./styles";
 import { Sidebar } from "../Sidebar";
