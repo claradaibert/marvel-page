@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import md5 from "md5";
 
 // Hook import
 import { useAppSelector } from "../../hooks/reduxHooks";
@@ -30,6 +32,8 @@ const ItemDetails: React.FC = () => {
   const [itemInfo, setItemInfo] = useState<IResponse>();
 
   const myPublicKey = user?.publicKey;
+  const myPrivateKey = user?.secretKey;
+  const hash = md5(`1${myPrivateKey}${myPublicKey}`);
 
   const getItemInfo = () => {
     const separateItemLocation = location.split("/");
@@ -49,17 +53,19 @@ const ItemDetails: React.FC = () => {
       setLoading(true);
       try {
         const response = await api.get(
-          `/${itemType}/${itemId}?apikey=${myPublicKey}`
+          `/${itemType}/${itemId}?ts=1&apikey=${myPublicKey}&hash=${hash}`
         );
         setItemInfo(response.data.data.results[0]);
-      } catch {}
+      } catch (err: any) {
+        toast.error(err?.response?.data?.message);
+      }
       setLoading(false);
     };
 
     if (myPublicKey) {
       getItemInfo();
     }
-  }, [itemType, itemId, myPublicKey]);
+  }, [itemType, itemId, myPublicKey, hash]);
 
   return (
     <PageLayout>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDebounce } from "use-lodash-debounce";
+import md5 from "md5";
 import { useLocation } from "react-router-dom";
 
 // Hook import
@@ -40,6 +41,8 @@ const DefaultListPage: React.FC = () => {
 
   const debouncedSearchValue = useDebounce(searchValue, 1000);
   const myPublicKey = user?.publicKey;
+  const myPrivateKey = user?.secretKey;
+  const hash = md5(`1${myPrivateKey}${myPublicKey}`);
   const { apiBaseRoute, findByName } = APIParams(location);
 
   const getPageTitle = () => {
@@ -57,7 +60,7 @@ const DefaultListPage: React.FC = () => {
         ? `${findByName}=${searchValue}&&`
         : "";
       const response = await api.get(
-        `/${apiBaseRoute}?${requestSearchValue}offset=${requestOffset}&apikey=${myPublicKey}`
+        `/${apiBaseRoute}?${requestSearchValue}offset=${requestOffset}&ts=1&apikey=${myPublicKey}&hash=${hash}`
       );
       setPageList((prevList) => prevList?.concat(response.data.data.results));
     } catch (err: any) {
@@ -72,7 +75,7 @@ const DefaultListPage: React.FC = () => {
       setSearchLoading(true);
       try {
         const response = await api.get(
-          `/${apiBaseRoute}?${findByName}=${e}&apikey=${myPublicKey}`
+          `/${apiBaseRoute}?${findByName}=${e}&ts=1&apikey=${myPublicKey}&hash=${hash}`
         );
         setPageList(response.data.data.results);
         setTotalItems(response.data.data.total);
@@ -87,14 +90,21 @@ const DefaultListPage: React.FC = () => {
     } else {
       setPageList(initialPageList);
     }
-  }, [debouncedSearchValue, myPublicKey, apiBaseRoute, findByName, initialPageList]);
+  }, [
+    debouncedSearchValue,
+    myPublicKey,
+    apiBaseRoute,
+    hash,
+    findByName,
+    initialPageList,
+  ]);
 
   useEffect(() => {
     const getList = async () => {
       setSearchLoading(true);
       try {
         const response = await api.get(
-          `/${apiBaseRoute}?apikey=${myPublicKey}`
+          `/${apiBaseRoute}?ts=1&apikey=${myPublicKey}&hash=${hash}`
         );
         setPageList(response.data.data.results);
         setInitialPageList(response.data.data.results);
@@ -107,7 +117,7 @@ const DefaultListPage: React.FC = () => {
     if (myPublicKey) {
       getList();
     }
-  }, [myPublicKey, apiBaseRoute]);
+  }, [myPublicKey, myPrivateKey, apiBaseRoute, hash]);
 
   return (
     <ListPageContainer
